@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)https://web.whatsapp.com/ -->
+<html class="js serviceworker adownload cssanimations csstransitions webp webp-alpha webp-animation webp-lossless" dir="LTR" loc="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>WhatsApp</title>
+<meta name="viewport" content="width=device-width">
+<meta name="google" content="notranslate">
+<meta name="format-detection" content="telephone=no">
+
+<meta name="description" content="Quickly send and receive WhatsApp messages right from your computer.">
+<meta name="og:description" content="Quickly send and receive WhatsApp messages right from your computer.">
+<meta name="og:url" content="https://web.whatsapp.com/">
+<meta name="og:title" content="WhatsApp Web">
+<meta name="og:image" content="https://www.whatsapp.com/img/whatsapp-promo.png">
+
+
+<link id="favicon" rel="shortcut icon" href="https://whatsapp.net/favicon_web.png" type="image/png">
+<link rel="apple-touch-icon" sizes="194x194" href="https://web.whatsapp.com/apple-touch-icon.png" type="image/png">
+
+<link rel="stylesheet" href="./sevensegdis_files/cssm_99362fa8365d8e39028c84edca18e758.css">
+
+<style>
+html, body, #app {
+height: 100%;
+width: 100%;
+overflow: hidden;
+padding: 0;
+margin: 0;
+}
+
+#app {
+position: absolute;
+top: 0;
+left: 0;
+}
+
+#startup, #initial_startup {
+width: 100%;
+height: 100%;
+position: fixed;
+background-color: #f2f2f2;
+
+-moz-user-select: none;
+-webkit-user-select: none;
+
+display: flex;
+align-items: center;
+justify-content: center;
+display: -webkit-box;
+display: -webkit-flex;
+-webkit-align-items: center;
+-webkit-justify-content: center;
+flex-direction: column;
+-webkit-flex-direction: column;
+}
+
+.spinner-container {
+-webkit-animation: rotate 2s linear infinite;
+animation: rotate 2s linear infinite;
+z-index: 2;
+}
+
+.spinner-path {
+stroke-dasharray: 1,150; 
+stroke-dashoffset: 0;
+stroke: #acb9bf;
+stroke-linecap: round;
+-webkit-animation: dash 1.5s ease-in-out infinite;
+animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+100% { transform: rotate(360deg); }
+}
+@-webkit-keyframes rotate{
+100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes dash {
+0% {
+stroke-dasharray: 1,150;  
+stroke-dashoffset: 0;
+}
+50% {
+stroke-dasharray: 90,150; 
+stroke-dashoffset: -35;   
+}
+100% {
+stroke-dasharray: 90,150; 
+stroke-dashoffset: -124;  
+}
+}
+@-webkit-keyframes dash {
+0% {
+stroke-dasharray: 1,150;  
+stroke-dashoffset: 0;
+}
+50% {
+stroke-dasharray: 90,150; 
+stroke-dashoffset: -35;   
+}
+100% {
+stroke-dasharray: 90,150; 
+stroke-dashoffset: -124;  
+}
+}
+
+.progress-container {
+width: 360px;
+position: fixed;
+padding-top: 120px;
+top: 50%;
+left: 50%;
+margin-left: -180px;
+}
+
+progress {
+-webkit-appearance: none;
+appearance: none;
+width: 100%;
+height: 3px;
+border: none;
+margin: 0;
+color: #02d1a4;
+background-color: #e0e4e5;
+}
+
+progress[value]::-webkit-progress-bar {
+background-color: #e0e4e5;
+}
+
+progress[value]::-webkit-progress-value {
+background-color: #02d1a4;
+}
+
+progress[value]::-moz-progress-bar {
+background-color: #02d1a4;
+}
+</style>
+<script id="progress_script_/vendor1.b8bc7eb3766beed76b69.js" type="text/javascript" charset="utf-8" async="" src="./sevensegdis_files/vendor1.b8bc7eb3766beed76b69.js.download"></script><script id="progress_script_/vendor2.020fd0f68598fe34c663.js" type="text/javascript" charset="utf-8" async="" src="./sevensegdis_files/vendor2.020fd0f68598fe34c663.js.download"></script><script id="progress_script_/app.72bef20e954c41fc886c.js" type="text/javascript" charset="utf-8" async="" src="./sevensegdis_files/app.72bef20e954c41fc886c.js.download"></script><script id="progress_script_/app3.04023e62bfb930619312.js" type="text/javascript" charset="utf-8" async="" src="./sevensegdis_files/app3.04023e62bfb930619312.js.download"></script><script id="progress_script_/app2.53c2c7a532e834b96c55.js" type="text/javascript" charset="utf-8" async="" src="./sevensegdis_files/app2.53c2c7a532e834b96c55.js.download"></script><style id="asset-style" type="text/css"></style><script type="text/javascript" charset="utf-8" async="" src="./sevensegdis_files/svg.ddb56cb9352690663b78.js.download"></script><script type="text/javascript" charset="utf-8" async="" src="./sevensegdis_files/app2.53c2c7a532e834b96c55.js.download"></script><link id="favicon" rel="shortcut icon" href="https://web.whatsapp.com/img/c5088e888c97ad440a61d247596f88e5.png" type="image/png" src="/img/c5088e888c97ad440a61d247596f88e5.png"><script type="text/javascript" charset="utf-8" async="" src="./sevensegdis_files/en.578d8504e8e411d4e742.js.download"></script></head>
+<body class="web">
+<div id="app"><div class="_1FKgS app-wrapper-web bFqKf"><span></span><span></span><span></span><span></span><span></span><div tabindex="-1" class="app _3dqpi two"><div class="_1pn8B"></div><div class="MZIyP"><div class="_3q4NP k1feT"><span class="_2JThb"></span></div><div class="_3q4NP _1Iexl"><span class="_2JThb"></span></div><div class="_3q4NP _2yeJ5"><span class="_2JThb"></span></div></div><div class="_3q4NP k1feT"><div id="side" class="swl8g"><header class="_3auIg"><div class="_2umId"><div class="_1WliW" style="height: 40px; width: 40px; cursor: pointer;"><img src="./sevensegdis_files/pp" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_20NlL"><div class="_3Kxus"><span><div class="rAUz7"><div role="button" title="Status"><span data-icon="status-v3-unread" class=""><svg id="df9d3429-f0ef-48b5-b5eb-f9d27b2deba6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#727A7E" d="M12.072 1.761a10.05 10.05 0 0 0-9.303 5.65.977.977 0 0 0 1.756.855 8.098 8.098 0 0 1 7.496-4.553.977.977 0 1 0 .051-1.952zM1.926 13.64a10.052 10.052 0 0 0 7.461 7.925.977.977 0 0 0 .471-1.895 8.097 8.097 0 0 1-6.012-6.386.977.977 0 0 0-1.92.356zm13.729 7.454a10.053 10.053 0 0 0 6.201-8.946.976.976 0 1 0-1.951-.081v.014a8.097 8.097 0 0 1-4.997 7.209.977.977 0 0 0 .727 1.813l.02-.009z"></path><path fill="#009588" d="M19 1.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"></path></svg></span></div><span></span></div><div class="rAUz7"><div role="button" title="New chat"><span data-icon="chat" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path opacity=".55" fill="#263238" d="M19.005 3.175H4.674C3.642 3.175 3 3.789 3 4.821V21.02l3.544-3.514h12.461c1.033 0 2.064-1.06 2.064-2.093V4.821c-.001-1.032-1.032-1.646-2.064-1.646zm-4.989 9.869H7.041V11.1h6.975v1.944zm3-4H7.041V7.1h9.975v1.944z"></path></svg></span></div><span></span></div><div class="rAUz7"><div role="button" title="Menu"><span data-icon="menu" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#263238" fill-opacity=".6" d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"></path></svg></span></div><span></span></div></span></div></div></header><span class="m6ZEb"></span><div tabindex="-1" class="_3CPl4"><div class="gQzdc"><button class="C28xL"><div class="_1M3wR _1BC4w"><span data-icon="back-blue" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#4FC3F7" d="M20 11H7.8l5.6-5.6L12 4l-8 8 8 8 1.4-1.4L7.8 13H20v-2z"></path></svg></span></div><div class="_1M3wR _3M2St"><span data-icon="search" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#263238" fill-opacity=".3" d="M15.009 13.805h-.636l-.22-.219a5.184 5.184 0 0 0 1.256-3.386 5.207 5.207 0 1 0-5.207 5.208 5.183 5.183 0 0 0 3.385-1.255l.221.22v.635l4.004 3.999 1.194-1.195-3.997-4.007zm-4.808 0a3.605 3.605 0 1 1 0-7.21 3.605 3.605 0 0 1 0 7.21z"></path></svg></span></div></button><span></span><div class="_2cLHw">Search or start new chat</div><label class="_2MSJr"><input type="text" class="jN-F5 copyable-text selectable-text" data-tab="2" dir="auto" title="Search or start new chat" value=""></label></div></div><div class="_1vDUw _1NrpZ" id="pane-side"><div tabindex="-1" data-tab="3"><div class=""><div class="RLfQR" style="height: 11160px;"><div class="_2wP_Y" style="z-index: 154; height: 72px; transform: translateY(0px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL _1f1zm"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Jaidhar" class="_1wjpf">Jaidhar</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">9:56 AM</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪e it to stay illuminated after being disabled until it is enabled again in the next cycle.
+
+In our program, we will define a counter that counts from 0 to 99 and displays the counting on the two seven-segments connected as above.
+
+Below is the program code, circuit picture and video.
+
+Program/Code
+#define F_CPU 8000000UL
+
+#include &lt;avr/io.h&gt;
+
+#include &lt;util/delay.h&gt;
+
+void Sev_Seg (char Number);
+
+
+void Sev_Seg (char Number) // Function to write the BCD of a number to the seven segment pins (PC4-7)
+
+{
+
+Â  switch(Number)Â Â Â Â 
+
+Â  {
+
+Â Â Â Â Â Â  Â  case 0:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=(1&lt;&lt;5)&amp;(1&lt;&lt;6)&amp;(1&lt;&lt;7)&amp;(1&lt;&lt;4);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 1:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=(1&lt;&lt;5)&amp;(1&lt;&lt;6)&amp;~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 2:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC|=(1&lt;&lt;5);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC&amp;=(1&lt;&lt;4)&amp;(1&lt;&lt;6)&amp;~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 3:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4)|(1&lt;&lt;5);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=(1&lt;&lt;6)&amp;(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 4:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=(1&lt;&lt;4)&amp;(1&lt;&lt;5)&amp;~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 5:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4)|(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=(1&lt;&lt;5)&amp;(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 6:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;5)|(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=(1&lt;&lt;4)&amp;(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 7:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4)|(1&lt;&lt;5)|(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 8:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=(1&lt;&lt;4)&amp;(1&lt;&lt;5)&amp;~(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 9:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;7)|(1&lt;&lt;4);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=(1&lt;&lt;5)&amp;(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }  } }
+
+
+
+int main(void)
+
+{
+
+Â Â Â  char count=0; // This is the variable that will be displayed on the seven-segment
+
+Â Â Â Â Â Â  char i=0;
+
+Â Â Â Â Â Â  DDRC|=0b11111100; // Set direction for port B as output
+
+Â Â Â Â Â Â  PORTC&amp;=0b00000011; // Set the all the seven segment pins to 0 in the beginning
+
+
+Â Â Â Â Â Â  while(1)
+
+Â Â Â  {
+
+Â Â Â  Â Â  for (count=0;count&lt;=99;count++) // This loop is to increment the number that will be displayed
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  {
+
+
+
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  for (i=0;i&lt;=17;i++) // This loop introduces some more delay so that the counting is slow enough for our eyes to recognize it
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  Sev_Seg(count%10); //write the first digit of &quot;count&quot; value to the first seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC|=(1&lt;&lt;2); //Enable the first seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  _delay_ms(10);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC&amp;=~(1&lt;&lt;2); //disable the first seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  Sev_Seg(count/10); //write the second digit of &quot;count&quot; value to the second seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC|=(1&lt;&lt;3); //Enable the second seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  _delay_ms(10);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC&amp;=~(1&lt;&lt;3); //disable the second seven-segment
+
+Â  } } Â  } }‬"><span dir="ltr" class="_1wjpf _3NFp9">e it to stay illuminated after being disabled until it is enabled again in the next cycle.
+
+In our program, we will define a counter that counts from 0 to 99 and displays the counting on the two seven-segments connected as above.
+
+Below is the program code, circuit picture and video.
+
+Program/Code
+#define F_CPU 8000000UL
+
+#include &lt;avr/io.h&gt;
+
+#include &lt;util/delay.h&gt;
+
+void Sev_Seg (char Number);
+
+
+void Sev_Seg (char Number) // Function to write the BCD of a number to the seven segment pins (PC4-7)
+
+{
+
+Â  switch(Number)Â Â Â Â 
+
+Â  {
+
+Â Â Â Â Â Â  Â  case 0:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="">(1&lt;&lt;5)&amp;</del>(1&lt;&lt;6)&amp;<del class="">(1&lt;&lt;7)&amp;</del>(1&lt;&lt;4);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 1:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="">(1&lt;&lt;5)&amp;</del>(1&lt;&lt;6)&amp;~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 2:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC|=(1&lt;&lt;5);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC&amp;=<del class="">(1&lt;&lt;4)&amp;</del>(1&lt;&lt;6)&amp;~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 3:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4)|(1&lt;&lt;5);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="">(1&lt;&lt;6)&amp;</del>(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 4:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="">(1&lt;&lt;4)&amp;</del>(1&lt;&lt;5)&amp;~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 5:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4)|(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="">(1&lt;&lt;5)&amp;</del>(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 6:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;5)|(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="">(1&lt;&lt;4)&amp;</del>(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 7:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4)|(1&lt;&lt;5)|(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 8:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="">(1&lt;&lt;4)&amp;</del>(1&lt;&lt;5)&amp;~(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 9:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;7)|(1&lt;&lt;4);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="">(1&lt;&lt;5)&amp;</del>(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }  } }
+
+
+
+int main(void)
+
+{
+
+Â Â Â  char count=0; // This is the variable that will be displayed on the seven-segment
+
+Â Â Â Â Â Â  char i=0;
+
+Â Â Â Â Â Â  DDRC|=0b11111100; // Set direction for port B as output
+
+Â Â Â Â Â Â  PORTC&amp;=0b00000011; // Set the all the seven segment pins to 0 in the beginning
+
+
+Â Â Â Â Â Â  while(1)
+
+Â Â Â  {
+
+Â Â Â  Â Â  for (count=0;count&lt;=99;count++) // This loop is to increment the number that will be displayed
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  {
+
+
+
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  for (i=0;i&lt;=17;i++) // This loop introduces some more delay so that the counting is slow enough for our eyes to recognize it
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  Sev_Seg(count%10); //write the first digit of "count" value to the first seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC|=(1&lt;&lt;2); //Enable the first seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  _delay_ms(10);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC&amp;=~(1&lt;&lt;2); //disable the first seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  Sev_Seg(count/10); //write the second digit of "count" value to the second seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC|=(1&lt;&lt;3); //Enable the second seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  _delay_ms(10);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC&amp;=~(1&lt;&lt;3); //disable the second seven-segment
+
+Â  } …</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 153; height: 72px; transform: translateY(1296px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(1)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Ajay Water" class="_1wjpf">Ajay Water</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Saturday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Ha‬"><span dir="ltr" class="_1wjpf _3NFp9">Ha</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 152; height: 72px; transform: translateY(1224px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Minnu" class="_1wjpf">Minnu</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Hi minnu‬"><div class="_1VfKB"><span data-icon="status-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18"><path fill="#4FC3F7" d="M17.394 5.035l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span></div><span dir="ltr" class="_1wjpf _3NFp9">Hi minnu</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 151; height: 72px; transform: translateY(1152px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(2)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Cs Sir" class="_1wjpf">Cs Sir</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Cousin marriages..‬"><span dir="ltr" class="_1wjpf _3NFp9">Cousin marriages..</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 150; height: 72px; transform: translateY(1080px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(3)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Bunny" class="_1wjpf">Bunny</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Ledu   28 nundi,  intiki raledu‬"><span dir="ltr" class="_1wjpf _3NFp9">Ledu   28 nundi,  intiki raledu</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 149; height: 72px; transform: translateY(1008px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(4)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Balaji Sf" class="_1wjpf">Balaji Sf</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Video‬"><div class="_1VfKB"><span data-icon="status-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18"><path fill="#4FC3F7" d="M17.394 5.035l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span></div><div class="_3FwEk status-video I9L8x"><span data-icon="status-video" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="16" height="20"><path fill="#263238" fill-opacity=".4" d="M15.243 5.868l-3.48 3.091v-2.27c0-.657-.532-1.189-1.189-1.189H1.945c-.657 0-1.189.532-1.189 1.189v7.138c0 .657.532 1.189 1.189 1.189h8.629c.657 0 1.189-.532 1.189-1.189v-2.299l3.48 3.09v-8.75z"></path></svg></span></div><span dir="auto" class="_1wjpf _3NFp9">Video</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 148; height: 72px; transform: translateY(936px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(5)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Shann" class="_1wjpf">Shann</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪👏‬"><div class="_1VfKB"><span data-icon="status-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18"><path fill="#4FC3F7" d="M17.394 5.035l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span></div><span dir="auto" class="_1wjpf _3NFp9"><img crossorigin="anonymous" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="👏" draggable="false" class="b30 emoji wa" style="background-position: -20px 0px;"></span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 147; height: 72px; transform: translateY(864px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(6)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Akhil" class="_1wjpf">Akhil</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪😝eppudu‬"><div class="_1VfKB"><span data-icon="status-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18"><path fill="#4FC3F7" d="M17.394 5.035l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span></div><span dir="ltr" class="_1wjpf _3NFp9"><img crossorigin="anonymous" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="😝" draggable="false" class="b62 emoji wa" style="background-position: -60px -20px;">eppudu</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 146; height: 72px; transform: translateY(792px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(7)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Bharath" class="_1wjpf">Bharath</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪😝‬"><div class="_1VfKB"><span data-icon="status-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18"><path fill="#4FC3F7" d="M17.394 5.035l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span></div><span dir="auto" class="_1wjpf _3NFp9"><img crossorigin="anonymous" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="😝" draggable="false" class="b62 emoji wa" style="background-position: -60px -20px;"></span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 145; height: 72px; transform: translateY(720px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(8)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Madhu" class="_1wjpf">Madhu</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Smec‬"><span dir="ltr" class="_1wjpf _3NFp9">Smec</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 144; height: 72px; transform: translateY(648px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(9)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Thuni Whatsapp" class="_1wjpf">Thuni Whatsapp</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Oh enjouyy‬"><span dir="ltr" class="_1wjpf _3NFp9">Oh enjouyy</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 143; height: 72px; transform: translateY(576px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(10)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Pavan Ch" class="_1wjpf">Pavan Ch</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Kk‬"><span dir="ltr" class="_1wjpf _3NFp9">Kk</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 142; height: 72px; transform: translateY(504px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(11)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Sai" class="_1wjpf">Sai</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">Sunday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪App install chey‬"><div class="_1VfKB"><span data-icon="status-dblcheck" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18"><path fill="#263238" fill-opacity=".4" d="M17.394 5.035l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span></div><div class="_3FwEk status-image I9L8x"><span data-icon="status-image" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="16" height="20"><path fill="#263238" fill-opacity=".4" d="M13.822 4.668H7.14l-1.068-1.09a1.068 1.068 0 0 0-.663-.278H3.531c-.214 0-.51.128-.656.285L1.276 5.296c-.146.157-.266.46-.266.675v1.06l-.001.003v6.983c0 .646.524 1.17 1.17 1.17h11.643a1.17 1.17 0 0 0 1.17-1.17v-8.18a1.17 1.17 0 0 0-1.17-1.169zm-5.982 8.63a3.395 3.395 0 1 1 0-6.79 3.395 3.395 0 0 1 0 6.79zm0-5.787a2.392 2.392 0 1 0 0 4.784 2.392 2.392 0 0 0 0-4.784z"></path></svg></span></div><span dir="ltr" class="_1wjpf _3NFp9">App install chey</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 141; height: 72px; transform: translateY(432px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><div class="_3ZW2E"><span data-icon="default-group" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M105.946.25C164.318.25 211.64 47.596 211.64 106s-47.322 105.75-105.695 105.75C47.571 211.75.25 164.404.25 106S47.571.25 105.946.25z"></path><path fill="#FFF" d="M61.543 100.988c8.073 0 14.246-6.174 14.246-14.246s-6.173-14.246-14.246-14.246-14.246 6.173-14.246 14.246 6.174 14.246 14.246 14.246zm8.159 17.541a48.192 48.192 0 0 1 8.545-6.062c-4.174-2.217-9.641-3.859-16.704-3.859-21.844 0-28.492 15.67-28.492 15.67v8.073h26.181l.105-.248c.303-.713 3.164-7.151 10.365-13.574zm80.755-9.921c-6.854 0-12.21 1.543-16.336 3.661a48.223 48.223 0 0 1 8.903 6.26c7.201 6.422 10.061 12.861 10.364 13.574l.105.248h25.456v-8.073c-.001 0-6.649-15.67-28.492-15.67zm0-7.62c8.073 0 14.246-6.174 14.246-14.246s-6.173-14.246-14.246-14.246-14.246 6.173-14.246 14.246 6.173 14.246 14.246 14.246zm-44.093 3.21a23.21 23.21 0 0 0 4.464-.428c.717-.14 1.419-.315 2.106-.521 1.03-.309 2.023-.69 2.976-1.138a21.099 21.099 0 0 0 3.574-2.133 20.872 20.872 0 0 0 5.515-6.091 21.283 21.283 0 0 0 2.121-4.823 22.16 22.16 0 0 0 .706-3.193c.16-1.097.242-2.224.242-3.377s-.083-2.281-.242-3.377a22.778 22.778 0 0 0-.706-3.193 21.283 21.283 0 0 0-3.272-6.55 20.848 20.848 0 0 0-4.364-4.364 21.099 21.099 0 0 0-3.574-2.133 21.488 21.488 0 0 0-2.976-1.138 22.33 22.33 0 0 0-2.106-.521 23.202 23.202 0 0 0-4.464-.428c-12.299 0-21.705 9.405-21.705 21.704 0 12.299 9.406 21.704 21.705 21.704zM145.629 131a36.739 36.739 0 0 0-1.2-1.718 39.804 39.804 0 0 0-3.367-3.967 41.481 41.481 0 0 0-3.442-3.179 42.078 42.078 0 0 0-5.931-4.083 43.725 43.725 0 0 0-3.476-1.776c-.036-.016-.069-.034-.104-.05-5.692-2.581-12.849-4.376-21.746-4.376-8.898 0-16.055 1.795-21.746 4.376-.196.089-.379.185-.572.276a43.316 43.316 0 0 0-3.62 1.917 42.32 42.32 0 0 0-5.318 3.716 41.501 41.501 0 0 0-3.443 3.179 40.632 40.632 0 0 0-3.366 3.967c-.452.61-.851 1.186-1.2 1.718-.324.493-.6.943-.841 1.351l-.061.101a27.96 27.96 0 0 0-.622 1.119c-.325.621-.475.975-.475.975v11.692h82.53v-11.692s-.36-.842-1.158-2.195a35.417 35.417 0 0 0-.842-1.351z"></path></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span dir="auto" title="A2 boys" class="_1wjpf">A2 boys</span></div><div class="_3Bxar"><span class="_3T2VG">yesterday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪This message was deleted‬"><span class="_1bX-5"><span dir="auto" class="">Aravind</span>:</span><div class="_3FwEk recalled-in"><span data-icon="recalled-in" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 19" width="17" height="19"><path fill="#9BA3A7" d="M12.629 12.463a5.17 5.17 0 0 0-7.208-7.209l7.208 7.209zm-1.23 1.229L4.191 6.484a5.17 5.17 0 0 0 7.208 7.208zM8.41 2.564a6.91 6.91 0 1 1 0 13.82 6.91 6.91 0 0 1 0-13.82z"></path></svg></span></div><span dir="auto" class="_2hMbR _1wjpf _3NFp9">This message was deleted</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 140; height: 72px; transform: translateY(360px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(12)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Harshith" class="_1wjpf">Harshith</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">yesterday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪He came bro‬"><div class="_1VfKB"><span data-icon="status-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18"><path fill="#4FC3F7" d="M17.394 5.035l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-.427-.388a.381.381 0 0 0-.578.038l-.451.576a.497.497 0 0 0 .043.645l1.575 1.51a.38.38 0 0 0 .577-.039l7.483-9.602a.436.436 0 0 0-.076-.609zm-4.892 0l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span></div><span dir="ltr" class="_1wjpf _3NFp9">He came bro</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 139; height: 72px; transform: translateY(288px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(13)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Aravind 27" class="_1wjpf">Aravind 27</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">yesterday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Thnx bro‬"><span dir="ltr" class="_1wjpf _3NFp9">Thnx bro</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 138; height: 72px; transform: translateY(216px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(14)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-group" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M105.946.25C164.318.25 211.64 47.596 211.64 106s-47.322 105.75-105.695 105.75C47.571 211.75.25 164.404.25 106S47.571.25 105.946.25z"></path><path fill="#FFF" d="M61.543 100.988c8.073 0 14.246-6.174 14.246-14.246s-6.173-14.246-14.246-14.246-14.246 6.173-14.246 14.246 6.174 14.246 14.246 14.246zm8.159 17.541a48.192 48.192 0 0 1 8.545-6.062c-4.174-2.217-9.641-3.859-16.704-3.859-21.844 0-28.492 15.67-28.492 15.67v8.073h26.181l.105-.248c.303-.713 3.164-7.151 10.365-13.574zm80.755-9.921c-6.854 0-12.21 1.543-16.336 3.661a48.223 48.223 0 0 1 8.903 6.26c7.201 6.422 10.061 12.861 10.364 13.574l.105.248h25.456v-8.073c-.001 0-6.649-15.67-28.492-15.67zm0-7.62c8.073 0 14.246-6.174 14.246-14.246s-6.173-14.246-14.246-14.246-14.246 6.173-14.246 14.246 6.173 14.246 14.246 14.246zm-44.093 3.21a23.21 23.21 0 0 0 4.464-.428c.717-.14 1.419-.315 2.106-.521 1.03-.309 2.023-.69 2.976-1.138a21.099 21.099 0 0 0 3.574-2.133 20.872 20.872 0 0 0 5.515-6.091 21.283 21.283 0 0 0 2.121-4.823 22.16 22.16 0 0 0 .706-3.193c.16-1.097.242-2.224.242-3.377s-.083-2.281-.242-3.377a22.778 22.778 0 0 0-.706-3.193 21.283 21.283 0 0 0-3.272-6.55 20.848 20.848 0 0 0-4.364-4.364 21.099 21.099 0 0 0-3.574-2.133 21.488 21.488 0 0 0-2.976-1.138 22.33 22.33 0 0 0-2.106-.521 23.202 23.202 0 0 0-4.464-.428c-12.299 0-21.705 9.405-21.705 21.704 0 12.299 9.406 21.704 21.705 21.704zM145.629 131a36.739 36.739 0 0 0-1.2-1.718 39.804 39.804 0 0 0-3.367-3.967 41.481 41.481 0 0 0-3.442-3.179 42.078 42.078 0 0 0-5.931-4.083 43.725 43.725 0 0 0-3.476-1.776c-.036-.016-.069-.034-.104-.05-5.692-2.581-12.849-4.376-21.746-4.376-8.898 0-16.055 1.795-21.746 4.376-.196.089-.379.185-.572.276a43.316 43.316 0 0 0-3.62 1.917 42.32 42.32 0 0 0-5.318 3.716 41.501 41.501 0 0 0-3.443 3.179 40.632 40.632 0 0 0-3.366 3.967c-.452.61-.851 1.186-1.2 1.718-.324.493-.6.943-.841 1.351l-.061.101a27.96 27.96 0 0 0-.622 1.119c-.325.621-.475.975-.475.975v11.692h82.53v-11.692s-.36-.842-1.158-2.195a35.417 35.417 0 0 0-.842-1.351z"></path></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span dir="auto" title="GBA 2020 ECE S" class="_1wjpf">GBA 2020 ECE S</span></div><div class="_3Bxar"><span class="_3T2VG">yesterday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Dear Students Interested in Advanced training for Product based companies
+
+Please assemble in lab 512, AB2 by 4:30PM today.
+
+Thanks
+DTP‬"><span class="_1bX-5"><span dir="ltr" class="">+91 82965 59960</span>:</span><span dir="ltr" class="_1wjpf _3NFp9"><strong class="">Dear Students Interested in Advanced training for Product based companies</strong>
+
+Please assemble in lab 512, AB2 by 4:30PM today.
+
+Thanks
+DTP</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 137; height: 72px; transform: translateY(144px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(15)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-group" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M105.946.25C164.318.25 211.64 47.596 211.64 106s-47.322 105.75-105.695 105.75C47.571 211.75.25 164.404.25 106S47.571.25 105.946.25z"></path><path fill="#FFF" d="M61.543 100.988c8.073 0 14.246-6.174 14.246-14.246s-6.173-14.246-14.246-14.246-14.246 6.173-14.246 14.246 6.174 14.246 14.246 14.246zm8.159 17.541a48.192 48.192 0 0 1 8.545-6.062c-4.174-2.217-9.641-3.859-16.704-3.859-21.844 0-28.492 15.67-28.492 15.67v8.073h26.181l.105-.248c.303-.713 3.164-7.151 10.365-13.574zm80.755-9.921c-6.854 0-12.21 1.543-16.336 3.661a48.223 48.223 0 0 1 8.903 6.26c7.201 6.422 10.061 12.861 10.364 13.574l.105.248h25.456v-8.073c-.001 0-6.649-15.67-28.492-15.67zm0-7.62c8.073 0 14.246-6.174 14.246-14.246s-6.173-14.246-14.246-14.246-14.246 6.173-14.246 14.246 6.173 14.246 14.246 14.246zm-44.093 3.21a23.21 23.21 0 0 0 4.464-.428c.717-.14 1.419-.315 2.106-.521 1.03-.309 2.023-.69 2.976-1.138a21.099 21.099 0 0 0 3.574-2.133 20.872 20.872 0 0 0 5.515-6.091 21.283 21.283 0 0 0 2.121-4.823 22.16 22.16 0 0 0 .706-3.193c.16-1.097.242-2.224.242-3.377s-.083-2.281-.242-3.377a22.778 22.778 0 0 0-.706-3.193 21.283 21.283 0 0 0-3.272-6.55 20.848 20.848 0 0 0-4.364-4.364 21.099 21.099 0 0 0-3.574-2.133 21.488 21.488 0 0 0-2.976-1.138 22.33 22.33 0 0 0-2.106-.521 23.202 23.202 0 0 0-4.464-.428c-12.299 0-21.705 9.405-21.705 21.704 0 12.299 9.406 21.704 21.705 21.704zM145.629 131a36.739 36.739 0 0 0-1.2-1.718 39.804 39.804 0 0 0-3.367-3.967 41.481 41.481 0 0 0-3.442-3.179 42.078 42.078 0 0 0-5.931-4.083 43.725 43.725 0 0 0-3.476-1.776c-.036-.016-.069-.034-.104-.05-5.692-2.581-12.849-4.376-21.746-4.376-8.898 0-16.055 1.795-21.746 4.376-.196.089-.379.185-.572.276a43.316 43.316 0 0 0-3.62 1.917 42.32 42.32 0 0 0-5.318 3.716 41.501 41.501 0 0 0-3.443 3.179 40.632 40.632 0 0 0-3.366 3.967c-.452.61-.851 1.186-1.2 1.718-.324.493-.6.943-.841 1.351l-.061.101a27.96 27.96 0 0 0-.622 1.119c-.325.621-.475.975-.475.975v11.692h82.53v-11.692s-.36-.842-1.158-2.195a35.417 35.417 0 0 0-.842-1.351z"></path></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span dir="auto" title="Appie b&#39;day ra Pilot" class="_1wjpf">Appie b'day ra Pilot</span></div><div class="_3Bxar"><span class="_3T2VG">yesterday</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪This is our story
+ఒక ఉద్యోగి ఇండియాలో తాను చేసే జాబ్ విసుగొచ్చి రిజైన్ చేసి లండన్ లో అతిపెద్ద మాల్ లో ఒక సేల్స్ మాన్ ఉద్యోగానికి అప్లికేషన్ పెట్టుకున్నాడు.
+
+అది ప్రపంచంలోనే అతి పె ద్ద మాల్. అక్కడ దొరకని వస్తువు అంటూ  ఉండదు.
+ &quot;ఇంతకు ముందు సేల్స్ మాన్ గా ఎక్కడైనా పనిచేసావా ?&quot; అడిగాడు బాస్.
+
+ &quot;చెయ్యలేదు&quot;
+ 
+&quot;సరే ! రేపు వచ్చి జాయిన్ అవ్వు. నీ పెర్ఫార్మన్స్ నేను స్వయంగా చూస్తా! &quot;.
+
+తర్వాతి రోజు చాలా భారంగా నడిచింది తనకి. చివరకి సాయంత్రం ఆరు గంటలకి బాస్ వచ్చాడు. 
+
+&quot;ఈ రోజు ఎంత మంది custermurs కి  సేల్స్ చేశావు?&quot;.
+
+ &quot;సర్ ! కేవలం ఒకరు&quot; అని బదులిచ్చాడు తను.
+
+ &quot;ఒకటేనా ! నువ్వు ఇక్కడ గమనించావా, అందరూ 40 నుండి 50 సేల్స్ చేస్తారు. సరే, ఎంత ఖరీదైన సేల్ నువ్వు చేశావో చెప్పు?&quot;
+
+ &quot;8,009,770 పౌండ్స్&quot; చెప్పాడు మన సేల్స్ మాన్. 
+
+&quot;వాట్ !!&quot; అదిరిపడ్డాడు  బాస్. 
+
+&quot;అంత పెద్ద సేల్ ఏమి చేశావు?&quot;  అడిగాడు. 
+
+&quot;వినండి. ఒక పెద్దాయనకి ఒక చేపలు పట్టే పెద్ద గేలం అమ్మాను.&quot;
+
+&quot;గాలం ఖరీదు నువ్వు చెప్పినంత ఎక్కువ ఖరీదు కాదే? &quot;  అన్నాడు బాస్.         
+
+&quot;పూర్తిగా వినండి, తర్వాత ఆ గాలానికి సరిపడే రాడ్, ఒక గేర్ అమ్మాను. ఎక్కడ చేపలు పట్టాలనుకుంటున్నారో అడిగితే దూరంగా నది ఒడ్డున అని చెప్పారు. దాని కన్నా ఒక బోట్  లో వెళుతూ నది మధ్య చేపలు పడితే  బాగుంటుందని ఒప్పించి బోట్ స్టోర్లో ఒక షూనర్ బోట్  డబల్ ఇంజన్ ఉన్నది కొనిపించాను. ఆ పెద్దమనిషి తన జీప్ కెపాసిటీ తక్కువ ఈ బోట్ ని తీసుకు పోలేదు అన్నారు. అప్పుడు ఆటొమోబైల్ డిపార్ట్మెంట్ లో ఒక కొత్త 4 * 4 డీలెక్స్ బ్లాజర్ కొనిపించాను.తరువాత అక్కడే నది ఒడ్డున ఉండటానికి కాంపింగ్ డిపార్ట్మెంట్ లో కొత్తగా ఒచ్చిన ఆరు స్లీపర్ల ఇగ్లూ కాంప్ టెంట్ దానిలో ఉండటానికి కావల్సిన భోజన సామగ్రి పాక్ చేయించాను.” 
+
+బాస్ ఆశ్చర్యంతో రెండు అడుగులు వెనక్కి వేశాడు. &quot;ఇవన్నీ ఒక గేలం కొనడానికి వచ్చిన వాడితో కొనిపించావా !!!&quot;
+
+ &quot;లేదు సార్ !&quot; బదులు ఇచ్చాడు సేల్స్ మాన్.
+
+&quot;మరి ? &quot;  అన్నాడు బాస్. 
+
+ &quot; ఆయన నిజానికి ఒక తల నొప్పి టాబ్లెట్ కోసం వచ్చారు. తలనొప్పికి టాబ్లెట్ కన్నా చేపలు పట్టే  హాబీ ద్వారా తగ్గించుకోవచ్చు అని ఒప్పించాను.&quot; 
+
+బాస్: &quot; అరే యార్ …!! ఇంతకీ  నువ్వు ఇండియాలో ఏం ఉద్యోగం చేసేవాడివి?&quot;
+
+అప్పుడు ఆ సేల్స్ మాన్ చెప్పాడు &quot;
+చైతన్య -నారాయణ, కార్పొరేట్ స్కూల్ లో టీచర్ ఉద్యోగం చేసేవాణ్ణి సార్.&quot;టీచర్ కి, సేల్స్ కు,ఏంటి రిలేషన్?? అడిగాడు బాస్ 
+ఏబిసిడి లు నేర్పమని వస్తే ,పదేళ్ల తర్వాత వచ్చే ఐఐటి -నీట్-సివిల్స్ ,రాంక్  పేరు మీద ఫీజులు వసూలు చేసేవాళ్ళం... అని ఆన్సర్ ఇచ్చాడు‬"><span class="_1bX-5"><span dir="ltr" class="">+91 99080 34985</span>:</span><span dir="ltr" class="_1wjpf _3NFp9">This is our story
+ఒక ఉద్యోగి ఇండియాలో తాను చేసే జాబ్ విసుగొచ్చి రిజైన్ చేసి లండన్ లో అతిపెద్ద మాల్ లో ఒక సేల్స్ మాన్ ఉద్యోగానికి అప్లికేషన్ పెట్టుకున్నాడు.
+
+అది ప్రపంచంలోనే అతి పె ద్ద మాల్. అక్కడ దొరకని వస్తువు అంటూ  ఉండదు.
+ "ఇంతకు ముందు సేల్స్ మాన్ గా ఎక్కడైనా పనిచేసావా ?" అడిగాడు బాస్.
+
+ "చెయ్యలేదు"
+ 
+"సరే ! రేపు వచ్చి జాయిన్ అవ్వు. నీ పెర్ఫార్మన్స్ నేను స్వయంగా చూస్తా! ".
+
+తర్వాతి రోజు చాలా భారంగా నడిచింది తనకి. చివరకి సాయంత్రం ఆరు గంటలకి బాస్ వచ్చాడు. 
+
+"ఈ రోజు ఎంత మంది custermurs కి  సేల్స్ చేశావు?".
+
+ "సర్ ! కేవలం ఒకరు" అని బదులిచ్చాడు తను.
+
+ "ఒకటేనా ! నువ్వు ఇక్కడ గమనించావా, అందరూ 40 నుండి 50 సేల్స్ చేస్తారు. సరే, ఎంత ఖరీదైన సేల్ నువ్వు చేశావో చెప్పు?"
+
+ "8,009,770 పౌండ్స్" చెప్పాడు మన సేల్స్ మాన్. 
+
+"వాట్ !!" అదిరిపడ్డాడు  బాస్. 
+
+"అంత పెద్ద సేల్ ఏమి చేశావు?"  అడిగాడు. 
+
+"వినండి. ఒక పెద్దాయనకి ఒక చేపలు పట్టే పెద్ద గేలం అమ్మాను."
+
+"గాలం ఖరీదు నువ్వు చెప్పినంత ఎక్కువ ఖరీదు కాదే? "  అన్నాడు బాస్.         
+
+"పూర్తిగా వినండి, తర్వాత ఆ గాలానికి సరిపడే రాడ్, ఒక గేర్ అమ్మాను. ఎక్కడ చేపలు పట్టాలనుకుంటున్నారో అడిగితే దూరంగా నది ఒడ్డున అని చెప్పారు. దాని కన్నా ఒక బోట్  లో వెళుతూ నది మధ్య చేపలు పడితే  బాగుంటుందని ఒప్పించి బోట్ స్టోర్లో ఒక షూనర్ బోట్  డబల్ ఇంజన్ ఉన్నది కొనిపించాను. ఆ పెద్దమనిషి తన జీప్ కెపాసిటీ తక్కువ ఈ బోట్ ని తీసుకు పోలేదు అన్నారు. అప్పుడు ఆటొమోబైల్ డిపార్ట్మెంట్ లో ఒక కొత్త 4 * 4 డీలెక్స్ బ్లాజర్ కొనిపించాను.తరువాత అక్కడే నది ఒడ్డున ఉండటానికి కాంపింగ్ డిపార్ట్మెంట్ లో కొత్తగా ఒచ్చిన ఆరు స్లీపర్ల ఇగ్లూ కాంప్ టెంట్ దానిలో ఉండటానికి కావల్సిన భోజన సామగ్రి పాక్ చేయించాను.” 
+
+బాస్ ఆశ్చర్యంతో రెండు అడుగులు వెనక్కి వేశాడు. "ఇవన్నీ ఒక గేలం కొనడానికి వచ్చిన వాడితో కొనిపించావా !!!"
+
+ "లేదు సార్ !" బదులు ఇచ్చాడు సేల్స్ మాన్.
+
+"మరి ? "  అన్నాడు బాస్. 
+
+ " ఆయన నిజానికి ఒక తల నొప్పి టాబ్లెట్ కోసం వచ్చారు. తలనొప్పికి టాబ్లెట్ కన్నా చేపలు పట్టే  హాబీ ద్వారా తగ్గించుకోవచ్చు అని ఒప్పించాను." 
+
+బాస్: " అరే యార్ …!! ఇంతకీ  నువ్వు ఇండియాలో ఏం ఉద్యోగం చేసేవాడివి?"
+
+అప్పుడు ఆ సేల్స్ మాన్ చెప్పాడు "
+చైతన్య -నారాయణ, కార్పొరేట్ స్కూల్ లో టీచర్ ఉద్యోగం చేసేవాణ్ణి సార్."టీచర్ కి, సేల్స్ కు,ఏంటి రిలేషన్?? అడిగాడు బాస్ 
+ఏబిసిడి లు నేర్పమని వస్తే ,పదేళ్ల తర్వాత వచ్చే ఐఐటి -నీట్-సివిల్స్ ,రాంక్  పేరు మీద ఫీజులు వసూలు చేసేవాళ్ళం... అని ఆన్సర్ ఇచ్చాడు</span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div><div class="_2wP_Y" style="z-index: 136; height: 72px; transform: translateY(72px); transition: none 0s ease 0s;"><div tabindex="-1"><div class="_2EXPL"><div class="dIyEr"><div class="_1WliW" style="height: 49px; width: 49px;"><img src="./sevensegdis_files/pp(16)" draggable="false" class="Qgzj8 gqwaM" style="visibility: visible;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_3j7s9"><div class="_2FBdJ"><div class="_25Ooe"><span class="_3TEwt"><span dir="auto" title="Uday 2" class="_1wjpf">Uday 2</span><div class="_1yct0"></div></span></div><div class="_3Bxar"><span class="_3T2VG">9:55 AM</span></div></div><div class="_1AwDx"><div class="_itDl"><span class="_2_LEW" title="‪Vamoo🤭‬"><div class="_1VfKB"><span data-icon="status-check" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 18" width="14" height="18"><path fill="#263238" fill-opacity=".4" d="M12.502 5.035l-.57-.444a.434.434 0 0 0-.609.076l-6.39 8.198a.38.38 0 0 1-.577.039l-2.614-2.556a.435.435 0 0 0-.614.007l-.505.516a.435.435 0 0 0 .007.614l3.887 3.8a.38.38 0 0 0 .577-.039l7.483-9.602a.435.435 0 0 0-.075-.609z"></path></svg></span></div><span dir="ltr" class="_1wjpf _3NFp9">Vamoo<img crossorigin="anonymous" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="🤭" draggable="false" class="b76 emoji wa" style="background-position: -60px 0px;"></span></span></div><div class="_3Bxar"><span></span><span></span><span></span></div></div></div></div></div></div></div></div></div><object class="_3lztd" data="./sevensegdis_files/saved_resource.html" type="text/html"></object></div></div></div><div class="_3q4NP _1Iexl"><div id="main" class="_1GX8_"><div class="YUoyu" data-asset-chat-background="true"></div><header class="_2y17h"><div class="_3mKlI" role="button"><div class="_1WliW" style="height: 40px; width: 40px;"><div class="_3ZW2E"><span data-icon="default-user" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" width="212" height="212"><path fill="#DFE5E7" d="M106.251.5C164.653.5 212 47.846 212 106.25S164.653 212 106.25 212C47.846 212 .5 164.654.5 106.25S47.846.5 106.251.5z"></path><g fill="#FFF"><path d="M173.561 171.615a62.767 62.767 0 0 0-2.065-2.955 67.7 67.7 0 0 0-2.608-3.299 70.112 70.112 0 0 0-3.184-3.527 71.097 71.097 0 0 0-5.924-5.47 72.458 72.458 0 0 0-10.204-7.026 75.2 75.2 0 0 0-5.98-3.055c-.062-.028-.118-.059-.18-.087-9.792-4.44-22.106-7.529-37.416-7.529s-27.624 3.089-37.416 7.529c-.338.153-.653.318-.985.474a75.37 75.37 0 0 0-6.229 3.298 72.589 72.589 0 0 0-9.15 6.395 71.243 71.243 0 0 0-5.924 5.47 70.064 70.064 0 0 0-3.184 3.527 67.142 67.142 0 0 0-2.609 3.299 63.292 63.292 0 0 0-2.065 2.955 56.33 56.33 0 0 0-1.447 2.324c-.033.056-.073.119-.104.174a47.92 47.92 0 0 0-1.07 1.926c-.559 1.068-.818 1.678-.818 1.678v.398c18.285 17.927 43.322 28.985 70.945 28.985 27.678 0 52.761-11.103 71.055-29.095v-.289s-.619-1.45-1.992-3.778a58.346 58.346 0 0 0-1.446-2.322zM106.002 125.5c2.645 0 5.212-.253 7.68-.737a38.272 38.272 0 0 0 3.624-.896 37.124 37.124 0 0 0 5.12-1.958 36.307 36.307 0 0 0 6.15-3.67 35.923 35.923 0 0 0 9.489-10.48 36.558 36.558 0 0 0 2.422-4.84 37.051 37.051 0 0 0 1.716-5.25c.299-1.208.542-2.443.725-3.701.275-1.887.417-3.827.417-5.811s-.142-3.925-.417-5.811a38.734 38.734 0 0 0-1.215-5.494 36.68 36.68 0 0 0-3.648-8.298 35.923 35.923 0 0 0-9.489-10.48 36.347 36.347 0 0 0-6.15-3.67 37.124 37.124 0 0 0-5.12-1.958 37.67 37.67 0 0 0-3.624-.896 39.875 39.875 0 0 0-7.68-.737c-21.162 0-37.345 16.183-37.345 37.345 0 21.159 16.183 37.342 37.345 37.342z"></path></g></svg></span></div></div></div><div class="_5SiUq" role="button"><div class="_16vzP"><div class="_3XrHh"><span dir="auto" title="Jaidhar" class="_1wjpf">Jaidhar</span></div></div></div><div class="YmSrp"><div class="_3Kxus"><div class="rAUz7"><div role="button" title="Search…"><span data-icon="search-alt" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#263238" fill-opacity=".5" d="M15.9 14.3H15l-.3-.3c1-1.1 1.6-2.7 1.6-4.3 0-3.7-3-6.7-6.7-6.7S3 6 3 9.7s3 6.7 6.7 6.7c1.6 0 3.2-.6 4.3-1.6l.3.3v.8l5.1 5.1 1.5-1.5-5-5.2zm-6.2 0c-2.6 0-4.6-2.1-4.6-4.6s2.1-4.6 4.6-4.6 4.6 2.1 4.6 4.6-2 4.6-4.6 4.6z"></path></svg></span></div><span></span></div><div class="rAUz7"><div role="button" title="Attach"><span data-icon="clip" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#263238" fill-opacity=".5" d="M1.816 15.556v.002c0 1.502.584 2.912 1.646 3.972s2.472 1.647 3.974 1.647a5.58 5.58 0 0 0 3.972-1.645l9.547-9.548c.769-.768 1.147-1.767 1.058-2.817-.079-.968-.548-1.927-1.319-2.698-1.594-1.592-4.068-1.711-5.517-.262l-7.916 7.915c-.881.881-.792 2.25.214 3.261.959.958 2.423 1.053 3.263.215l5.511-5.512c.28-.28.267-.722.053-.936l-.244-.244c-.191-.191-.567-.349-.957.04l-5.506 5.506c-.18.18-.635.127-.976-.214-.098-.097-.576-.613-.213-.973l7.915-7.917c.818-.817 2.267-.699 3.23.262.5.501.802 1.1.849 1.685.051.573-.156 1.111-.589 1.543l-9.547 9.549a3.97 3.97 0 0 1-2.829 1.171 3.975 3.975 0 0 1-2.83-1.173 3.973 3.973 0 0 1-1.172-2.828c0-1.071.415-2.076 1.172-2.83l7.209-7.211c.157-.157.264-.579.028-.814L11.5 4.36a.572.572 0 0 0-.834.018l-7.205 7.207a5.577 5.577 0 0 0-1.645 3.971z"></path></svg></span></div><span></span></div><div class="rAUz7"><div role="button" title="Menu"><span data-icon="menu" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#263238" fill-opacity=".6" d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"></path></svg></span></div><span></span></div></div></div></header><span class="_2tOh4"></span><div class="_2tOh4"><span></span></div><div class="_3zJZ2"><div class="copyable-area"><span></span><span><div class="_298R6" role="button" style="transform: scaleX(1) scaleY(1); opacity: 1;"><span class="FJVFR"></span><span data-icon="down" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" width="21" height="21"><path fill="#263238" fill-opacity=".33" d="M4.8 6.1l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z"></path></svg></span></div></span><div class="_2nmDZ _3D9Wd" tabindex="0"><div class="wml2-"></div><div class="_1MsrQ"><div class="_3dGYA" title="load earlier messages…"><div class="LQEjW"><span data-icon="refresh" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#263238" fill-opacity=".55" d="M17.6 6.4C16.2 4.9 14.2 4 12 4c-4.4 0-8 3.6-8 8s3.6 8 8 8c3.7 0 6.8-2.6 7.7-6h-2.1c-.8 2.3-3 4-5.6 4-3.3 0-6-2.7-6-6s2.7-6 6-6c1.7 0 3.1.7 4.2 1.8L13 11h7V4l-2.4 2.4z"></path></svg></span></div></div></div><div class="_9tCEa _1P2Tp"><div class="vW7d1 _3rjxZ"><div class="_3_7SH Zq3Mc"><span dir="auto" class="">5/5/2019</span></div></div><div class="vW7d1 _1nHRW"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[4:52 AM, 5/5/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Untunnadu</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">4:52 AM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out"><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[5:20 AM, 5/5/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Location pampu</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">5:20 AM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-in tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[5:21 AM, 5/5/2019] Jaidhar: "><div class="_3FDzO"><div class="_2nFG1 _2lwig"><img class="_2H6ea" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCACMAIwDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAUHAwQGAgEI/8QAPhAAAgEDAgMEBQkHBAMAAAAAAQIDAAQRBRIGITEHE0FRImFxgbEUIzIzQnKRodEWNlJTkrLBFTSC8GJ08f/EABsBAAIDAQEBAAAAAAAAAAAAAAAEAgMFBgcB/8QAMBEAAgIBAgMFBwUBAQAAAAAAAQIAAxEEBRIhMUFRcYGRBhMUIjNhoTJCsdHwweH/2gAMAwEAAhEDEQA/ANulKV6HPKIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIpSlEIqRsNE1HULcz2do80QJUsuOoqOq1Ozp0teGC906wq0zspkO3cMKMjz91J67UnS1e8GPOaG2aL42/3XPp2SsriyurdA1xbTxKTjLxlR+dYK/QEckVxHvieOVOXNSCB7fKvGp6Npt0kbXFhbSO6YZ2iG4/8utZ6b2pxlfQzWt9nGXOH5jvEoKlW5dcDaJMFEcM1uR1McpOf6s1HpwXpUM53fKJVBI2vJy/IA02u6UMO2INsuoU45ev/AJKzrJDBLOxWCKSRhzIRSfhVsW2haXbIFisYORyC67zn2tk1IhVXoAPYKrbdR+1ZamyN+9/SVPb8ParcKrR2MpDdM4HxrzdaBq1rt77T7gbum1N3wzVv2/1ye2pi2jDEu/0F5mlX3exT+kYjibDU4wGOfKfneWN4pGjlRkdThlYYIPrFea/Qd6kV5vWeGOSNuWx1BBHrFQ13wvot0VMunQLt6d1mP8dpGauTeVP61x4c/wCpRZ7PuPpuD48v7lP6ZYy6jfRWtvjfIep6KPEn1CtzibV9H4YuodPtOH7rXbvuxLM6ybSinKqcblABKvjqeR9VWFFwnY6Ze9/YmYSukiqrvlRkdByzVO9qOqXmg65FdTRL/p1xCkQnd22xOpclWAyRncuDjnnB6Cl9fuDPWXoJwMTR2naa6zjUAEnznWaVDpnFWhm70qzm02/iyj2rsW9NeZQgkkNggggkEY86i4NI1Cd9sVlOTjPNCPjUl2NwXs9pJqNyjW3y+6+VrGRgxosaJuPtEefYRVnA55+fOpU7hbWg4hkkZ5yGt2iiyzKch9pS93azWc7Q3MZjlXGVPhmsNT3HH7yXP3U/tFQNblTl0DHtE5W+sV2Mg7CRJLh21iu9YgiuUMkADSOgbG4KpbGfXjFRPH1vxnxXrD2HCxeKOBUluJ0m7k5YkKoOcgAKeQ9VSGj3i6fqltdPGJY429NP4lIIYdRzwTXS6DoOqrx2mu6LqFtcaDcQi2uYWQlnA3FTt+ywJAOfX1rlfaOu02I+MoB+Z3nsfqKE01tYOLCR4lft59ZynZnLxdwxqX+ncUh3kWMzwyvLvMib9rozdTz8+gI9WP0HdHaVU9FXHOqxsOE9cve0bUNZ1y7hfS5V7i1gRSpSNWBC45c255P+ABVm3KkOVcDpz99Y2kVgxJ6ToNytR6kGcsM58OyYUYOoZehGajpvrX+8a3lDI6Iv1YXnUTqk/wAnimkH0skD21qVjJwJgWnlNPUNSW3YxxAPIOvkKiJL65kOTM4+6dvwrWJycmtu0sJrmJ5VMccKEBpJXCLnyyfGtRa0rHOKZZzgT3Y391HcJtlZsno/pV2Fnq8d5GtuBskXqM9fZXIyWclkkUrFHSXOySJg6nHXBHKkUjRSK6EhlOQaotqS3mJfWzVjBnb0rFbSia3jkH2lBr27pGuZGVRnGScc6zcHOI1ma94AXiz5/pXLcUcI6HrGpy3GpW1ytw+Cbi0kKucDGCDlfLmADy611V39ZF7f0rDe/wC5b3fCg1rZhXGRJVam3TEvU2DIPQdE0/R7RodMtfk8bkF9zFnkIHLcxP5DAyTyqVpSr1RUHCowItbc9zl7DkntMq/jj95Ln7qf2ioGp7jj95Ln7qf2ioGuq030V8BOG1f138T/ADFWp2ZK37PF45GjYXDcwB5L51Vdd7wFqctlpxQLvhMpJXHMchzFLbmhejA741tV60agO/TEse2RjOpeRpHLZLNj/Fbc88Ld4LjCKmfT8gPOtLR7uG8IlicYQZZT1FafEayz6XerbBjI49EL1PP9K5cV8VgU8p2y2g18a8wZIyxNHgnBU8ww6Gua4gBNtLgfb/zUnwjPcJokMN/G3o5Ubzz2+H6Y9VNRtFlWYId0TEgnxFWofdW8Ldhldi+8QMs4esnEWl3mvcN2EWmEvJZvJ3ltuwZNxyGA8SOn41kmtJIZ+7kHvHQivcsbdyrxN6I8uorW4yGVkPMc4mq/KeLpPmk2EuicNRaffOjXclyZ+6U57kYAwT5nHSvdasZJlBPM5qU0+0e7nCKDtH0m8hUbDjLsevMyS/NyE6PR0KabAG64J/Ek1G8ZQ3M2mILUMdsgLBT4f/cVOooRAqjAAwKwXlzbwRn5S6gH7J5k+6suuwi3jAzzjNgUVkMcCa8Rla1sjcLtmKjePI8s1sXIg75u8Zw3jioPU9eRXj7iEt1ILHFaUms38r7zbpz8kb9auGlsfDdIt8dSAQDmdLi2/ikpi2/ikrmW1O/VsdxGfWEbHxr6NcZW2yQqSDglW5e6pfB2dh/Mj8dX2jHlON482ftPdd2SV2p1+6K5+pji24W612eVAQCF5H7oqHrpNOCtSg9wnH6tg17sO8/zFWl2bafFf8ONHKmfn39IdV5Dxqratvsul2cLSqvVrhufuWk91JFGV7xH9kRX1PC4yMGbF9o8thM72UryoOYK8mHq/DxH4V7tNcKkpeJ9HkXXr7x51OMwXG4gZOBWpfWFrdAd8oVzyDryNYItDDFgz95vto3pJbStj7HpNmCaKdN0Lq6+YNafetFO5U8txyPOoiXTLzT2MlszOB0ZDg+8VrQ62RIy3cZ3A4LKPiKmun4slOYnxdcwPDcvCw9J0eoQwy2g3xKe85+scvCoaHS1ilykzCM9VK5rek1ayltYts6gjqG5HpWpNqlnFGXMykDwHM0Uraq8IBjV1qMwIIm3+zEO5LiKdpYScsqjbipJEgtIcKFijFQdnxPHa3CiJGkiY+lnkMeYqS1rS5dRaK6sZz8ncc0bls9YH/f0jYLAwW44Eib0KE6ccTDqP++Ej7/XCxMVipJPLeR8BXiz0ia4YS3bsqk59IAualNP0yCzGQN8vi7D4eVb9fDaE5V+sXTRPcePVHP2HQSMaxtrZ4u6hUHPU8z4eNZLwAXDAchy+FZrv6yL2/pWG9/3Le74VAElhnujvAqIQowMiYDXmW3Ro/nYQUP8S8jWpxNq68OcNXuqG3aeWGFplRepA5ADPiT4+VUXw/2o8fDiODUdejgOhzv3cljD3YZBnbuGcuSp5kE469PBK3cgjlEGeHrz/Aj1G1PfXxzruM4kh4huUiUKuFOB90VCV2XaRp2y7g1OJSIrj5uQDosigdPIEY/A1xtdpt+oTU6ZLUOQRPPdy07afVWVuMEGKtbsx/dt/wD2G+C1VNW72VvCvDLiRCzfKH5j2LVG7HGn8xG9iGdV5GdFPEJggJwFYN+FJoVlMZb7DbhW/wB5bfymp3lt/KauZ4z3TseAd81ahby0gnmcyRqW3HmOR6+ddJ3lt/KaoyaS271/mm+kf+9anXYVOQDK7alYYJEh5dBtYkjljknVm58mHLl4cs1HX+gJLAwt5G70nOZDy/IV1lwhlhiES8uoHkMVhWzbkXdVFX16x1GS3OUWaJeL5FkToemR2iQrKqPMDzfGfwz6q6e3mMLeanqK07dLZJk3OXPqqR+URp9VEOnU1TdYbTkiX0VCociBPtxbbsPCMhvDyrwLR+rlVHrNeXupW+1tHqrEzFjliT7apAaXMUzkCeb2OCMxlpSxBPStZ54Sxbu9zHzr5ffY99alXrWCMkxd7SCQBPOsRxanpkqXI+aWMxyqPBeoPs5/lVX6HpGkya5bo8WDE0nzmQRLuYEBQFBGSATzOceFWvbIHnUHIPPBBxXiWad41iKwoFPN0GGby51mWbWr2MVYji/E0qN1tpqwMf7z/wB1nE9pWpYjtdIQglGNzN/4sRhV9uMk+0VwtTfGxReJblARkKnL/iKhK7ja9Kul0ldSdAJ51uupbU6uyx+/HpFTmg8UahosDQWvcvCSW2SpkAnxyCD4VB0pyytbBwuMiJVWvU3FWcGd/adozhUW809WbPpvFJgY9SkH41MW3HukSlu9FxBjpvTOf6SaqilJPtmnboMeBmjXvOqTqc+Il22vEekXXdiK/h3P0VmwfwNaGp69pdlM4ub6FW5sBuySPdVQ0qobTWDkMcRg77YwwUGZYuodp2jQQwrare3DYw3dw7cf1Y/KuV1DtSvpFIsdJWNt30p3aQEewAYPvqEpV9W26ev9ufGU271qLOvLwmG7474muHYrcmBS24LDEF2+oHGce01v2PabxRbb+++T3ecY763xt9mzb+da1KZOmoIwUHpFxuN6nIY+s6/T+1xWZV1DRZ0G30ngk3ZPqUgYHvro9O7RtAuxEJJZ7aRzjbNCRt9pGR+dVbSlH2vTt0BHn/caTfNQvXB/32lx3nEejvai5XUbcwq2wsG6HlyqEu+OdBtpe7N28pxnMUTOPxAqt6VBNqqXqTJPvdjcwonZntPtYvTtNJvppAcBZMRqR7Rk/lUVddomrTTZtNMghjx9GXdIc+0FfhUDSmF0GnU54Yu+7ahxjOBNa/ur3Ur57u9Bad8ZIUDoMDpXxRKB9qtqlNgADAiDWFjkxSlKJXFKUohFKUohFKUohFKUohFKUohFKUohFKUohFKUohP/2Q=="><div class="_3BCzw"><div class="_3zVOv" title="See my real-time location on Google Maps!"><span dir="auto" class="">See my real-time location on Google Maps!</span></div><div class="_3QqKs" title="Visit Google Maps to check out my real-time location. With the Google Maps App you can share your location with friends and family too."><span dir="auto" class="">Visit Google Maps to check out my real-time location. With the Google Maps App you can share your location with friends and family too.</span></div><div class="_16y6t"><span dir="auto" class="">maps.app.goo.gl</span></div></div></div></div><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">See me on Google Maps! <a href="https://maps.app.goo.gl/BHxfYMoyC2UiKdid6" title="https://maps.app.goo.gl/BHxfYMoyC2UiKdid6" target="_blank" rel="noopener noreferrer" class="selectable-text invisible-space copyable-text">https://maps.app.goo.gl/BHxfYMoyC2UiKdid6</a></span></div></div><div class="_2f-RV"><div class="_1DZAH"><span class="_1ORuP"></span><span class="_3EFt_">5:21 AM</span></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _1OI2B message-out tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="_3C-gs copyable-text" data-pre-plain-text="[7:28 AM, 5/5/2019] Naveen: "><div class="_3hy7L selectable-text invisible-space copyable-text" data-plain-text="https://maps.google.com/maps?q=17.4661238%2C78.4931486&amp;z=17&amp;hl=en" style="height: 150px;"><a href="https://maps.google.com/maps?q=17.4661238%2C78.4931486&amp;z=17&amp;hl=en" target="_blank" class="_2i3pg"><img crossorigin="anonymous" src="./sevensegdis_files/staticmap" class="_1Qnxi" style="pointer-events: none; width: 270px; visibility: visible;"></a><div class="_1i3Za"></div></div><div class="_2ywZ0"><div class="_1DZAH _2Pjvv" role="button"><span class="_1ORuP"></span><span class="_3EFt_">7:28 AM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack-light" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-in tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[7:29 AM, 5/5/2019] Jaidhar: "><div class="_3FDzO"><div class="_2nFG1 _2lwig"><img class="_2H6ea" src="data:image/jpeg;base64,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"><div class="_3BCzw"><div class="_3zVOv" title="See my real-time location on Google Maps!"><span dir="auto" class="">See my real-time location on Google Maps!</span></div><div class="_3QqKs" title="Visit Google Maps to check out my real-time location. With the Google Maps App you can share your location with friends and family too."><span dir="auto" class="">Visit Google Maps to check out my real-time location. With the Google Maps App you can share your location with friends and family too.</span></div><div class="_16y6t"><span dir="auto" class="">maps.app.goo.gl</span></div></div></div></div><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">See me on Google Maps! <a href="https://maps.app.goo.gl/5EuvM5qXi8RWfGnDA" title="https://maps.app.goo.gl/5EuvM5qXi8RWfGnDA" target="_blank" rel="noopener noreferrer" class="selectable-text invisible-space copyable-text">https://maps.app.goo.gl/5EuvM5qXi8RWfGnDA</a></span></div></div><div class="_2f-RV"><div class="_1DZAH"><span class="_1ORuP"></span><span class="_3EFt_">7:29 AM</span></div></div></div><span></span></div></div><div class="vW7d1 _3rjxZ"><div class="_3_7SH Zq3Mc"><span dir="auto" class="">5/7/2019</span></div></div><div class="vW7d1 _1nHRW"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[2:05 PM, 5/7/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Hi</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">2:05 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out"><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[2:05 PM, 5/7/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Any new concept started</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">2:05 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-in tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[2:15 PM, 5/7/2019] Jaidhar: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Yes</span></div></div><div class="_2f-RV"><div class="_1DZAH"><span class="_1ORuP"></span><span class="_3EFt_">2:15 PM</span></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[2:15 PM, 5/7/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Really</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">2:15 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1 _3rjxZ"><div class="_3_7SH Zq3Mc"><span dir="auto" class="">FRIDAY</span></div></div><div class="vW7d1 _1nHRW"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[8:10 PM, 5/10/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Bro</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">8:10 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out"><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[8:10 PM, 5/10/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Bring my plate also bro</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">8:10 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-in tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[8:13 PM, 5/10/2019] Jaidhar: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Wr r u</span></div></div><div class="_2f-RV"><div class="_1DZAH"><span class="_1ORuP"></span><span class="_3EFt_">8:13 PM</span></div></div></div><span></span></div></div><div class="vW7d1 _1nHRW"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[8:13 PM, 5/10/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Cmng</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">8:13 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out"><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[8:13 PM, 5/10/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Uppal</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">8:13 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-in tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[8:14 PM, 5/10/2019] Jaidhar: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">I already ate nd came to room</span></div></div><div class="_2f-RV"><div class="_1DZAH"><span class="_1ORuP"></span><span class="_3EFt_">8:14 PM</span></div></div></div><span></span></div></div><div class="vW7d1 _3rjxZ"><div class="_3_7SH Zq3Mc"><span dir="auto" class="">SATURDAY</span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[8:19 PM, 5/11/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Bro u ate aa</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">8:19 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-in tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[8:31 PM, 5/11/2019] Jaidhar: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Yes just now</span></div></div><div class="_2f-RV"><div class="_1DZAH"><span class="_1ORuP"></span><span class="_3EFt_">8:31 PM</span></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[8:34 PM, 5/11/2019] Naveen: "><div class="_3zb-j"><div class="_2x9bY selectable-text invisible-space copyable-text"><span class="QN22c"><img crossorigin="anonymous" src="./sevensegdis_files/986449f2ab46622e888b7c1f2ce0c477_w_e752-64.png" alt="👏" draggable="false" class="_2DV1k QkfD1 selectable-text invisible-space copyable-text" data-plain-text="👏" style="visibility: visible;"></span></div></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">8:34 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1 _3rjxZ"><div class="_3_7SH Zq3Mc"><span dir="auto" class="">YESTERDAY</span></div></div><div class="vW7d1 _1nHRW"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[7:38 PM, 5/13/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Bro</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">7:38 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1"><span><div class="_1o1sm" style="opacity: 1;"><div class="_3I_df"><div class="me9CP"><div class="_1KfC8 _2uQfJ"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-out"><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[7:38 PM, 5/13/2019] Naveen: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">Bring my plate while you are coming to mess</span></div></div><div class="_2f-RV"><div class="_1DZAH" role="button"><span class="_1ORuP"></span><span class="_3EFt_">7:38 PM</span><div class="_32uRw"><span data-icon="msg-dblcheck-ack" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 15" width="16" height="15"><path fill="#4FC3F7" d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z"></path></svg></span></div></div></div></div><span></span></div></div><div class="vW7d1 _3rjxZ"><div class="_3_7SH Zq3Mc _37i-Z"><span dir="auto" class="">TODAY</span></div></div><div class="vW7d1"><span><div class="_1o1sm _2nOMz" style="opacity: 1;"><div class="_3I_df"><div class="me9CP _1VD7W"><div class="_1KfC8 _1s8CA"></div></div></div></div></span><div class="_3_7SH _3DFk6 message-in tail"><span class="tail-container"></span><span class="tail-container highlight"></span><div class="Tkt2p"><div class="copyable-text" data-pre-plain-text="[9:56 AM, 5/14/2019] Jaidhar: "><div class="_3zb-j ZhF0n"><span dir="ltr" class="selectable-text invisible-space copyable-text">e it to stay illuminated after being disabled until it is enabled again in the next cycle.
+
+In our program, we will define a counter that counts from 0 to 99 and displays the counting on the two seven-segments connected as above.
+
+Below is the program code, circuit picture and video.
+
+Program/Code
+#define F_CPU 8000000UL
+
+#include &lt;avr/io.h&gt;
+
+#include &lt;util/delay.h&gt;
+
+void Sev_Seg (char Number);
+
+
+void Sev_Seg (char Number) // Function to write the BCD of a number to the seven segment pins (PC4-7)
+
+{
+
+Â  switch(Number)Â Â Â Â 
+
+Â  {
+
+Â Â Â Â Â Â  Â  case 0:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="selectable-text invisible-space copyable-text" data-app-text-template="~${appText}~">(1&lt;&lt;5)&amp;</del>(1&lt;&lt;6)&amp;<del class="selectable-text invisible-space copyable-text" data-app-text-template="~${appText}~">(1&lt;&lt;7)&amp;</del>(1&lt;&lt;4);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 1:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="selectable-text invisible-space copyable-text" data-app-text-template="~${appText}~">(1&lt;&lt;5)&amp;</del>(1&lt;&lt;6)&amp;~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 2:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC|=(1&lt;&lt;5);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC&amp;=<del class="selectable-text invisible-space copyable-text" data-app-text-template="~${appText}~">(1&lt;&lt;4)&amp;</del>(1&lt;&lt;6)&amp;~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 3:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4)|(1&lt;&lt;5);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="selectable-text invisible-space copyable-text" data-app-text-template="~${appText}~">(1&lt;&lt;6)&amp;</del>(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 4:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="selectable-text invisible-space copyable-text" data-app-text-template="~${appText}~">(1&lt;&lt;4)&amp;</del>(1&lt;&lt;5)&amp;~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 5:
+
+Â Â Â Â Â Â  Â  { 
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4)|(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="selectable-text invisible-space copyable-text" data-app-text-template="~${appText}~">(1&lt;&lt;5)&amp;</del>(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 6:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;5)|(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="selectable-text invisible-space copyable-text" data-app-text-template="~${appText}~">(1&lt;&lt;4)&amp;</del>(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 7:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;4)|(1&lt;&lt;5)|(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=~(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 8:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;7);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="selectable-text invisible-space copyable-text" data-app-text-template="~${appText}~">(1&lt;&lt;4)&amp;</del>(1&lt;&lt;5)&amp;~(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }
+
+Â Â Â Â Â Â  Â  case 9:
+
+Â Â Â Â Â Â  Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC|=(1&lt;&lt;7)|(1&lt;&lt;4);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  PORTC&amp;=<del class="selectable-text invisible-space copyable-text" data-app-text-template="~${appText}~">(1&lt;&lt;5)&amp;</del>(1&lt;&lt;6);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  Â  break;
+
+Â Â Â Â Â Â  Â  }  } }
+
+
+
+int main(void)
+
+{
+
+Â Â Â  char count=0; // This is the variable that will be displayed on the seven-segment
+
+Â Â Â Â Â Â  char i=0;
+
+Â Â Â Â Â Â  DDRC|=0b11111100; // Set direction for port B as output
+
+Â Â Â Â Â Â  PORTC&amp;=0b00000011; // Set the all the seven segment pins to 0 in the beginning
+
+
+Â Â Â Â Â Â  while(1)
+
+Â Â Â  {
+
+Â Â Â  Â Â  for (count=0;count&lt;=99;count++) // This loop is to increment the number that will be displayed
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â  {
+
+
+
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  for (i=0;i&lt;=17;i++) // This loop introduces some more delay so that the counting is slow enough for our eyes to recognize it
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  {
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  Sev_Seg(count%10); //write the first digit of "count" value to the first seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC|=(1&lt;&lt;2); //Enable the first seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  _delay_ms(10);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC&amp;=~(1&lt;&lt;2); //disable the first seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  Sev_Seg(count/10); //write the second digit of "count" value to the second seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC|=(1&lt;&lt;3); //Enable the second seven-segment
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  _delay_ms(10);
+
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  PORTC&amp;=~(1&lt;&lt;3); //disable the second seven-segment
+
+Â  } } Â  } }</span></div></div><div class="_2f-RV"><div class="_1DZAH"><span class="_1ORuP"></span><span class="_3EFt_">9:56 AM</span></div></div></div><span></span></div></div></div></div></div></div><div class="grGJn" style=""></div><footer class="_3XpR2"></footer><span><div class="_2FsQ8" style="transform: translateY(0%);"><button class="PNqfx"><span data-icon="x" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path opacity=".45" fill="#263238" d="M19.1 17.2l-5.3-5.3 5.3-5.3-1.8-1.8-5.3 5.4-5.3-5.3-1.8 1.7 5.3 5.3-5.3 5.3L6.7 19l5.3-5.3 5.3 5.3 1.8-1.8z"></path></svg></span></button><span class="_1S4i5">1 selected</span><button class="PNqfx" title="Star message"><span data-icon="star-btn" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#263238" d="M11.1 16.8l-4.4 3.1c-.7.5-1.5-.1-1.3-.9L7 13.9c.1-.3 0-.7-.3-.9L2.4 9.7c-.6-.4-.3-1.4.5-1.4l5.4-.1c.3 0 .6-.2.7-.6l1.8-5.1c.2-.7 1.3-.7 1.5 0l1.8 5.1c.1.3.4.5.7.5l5.4.1c.8 0 1.1 1 .5 1.4L16.4 13c-.3.2-.4.5-.3.9l1.6 5.2c.2.7-.6 1.3-1.2.9L12 16.8c-.3-.2-.6-.2-.9 0z"></path></svg></span></button><button class="PNqfx" title="Delete message"><span data-icon="delete" class=""><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#263238" d="M6 18c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6H6v12zM19 3h-3.5l-1-1h-5l-1 1H5v2h14V3z"></path></svg></span></button><button class="PNqfx" title="Forward message"><span data-icon="forward" class=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd" fill="#263238" d="M14.278 4.813c0-.723.873-1.085 1.383-.574l6.045 6.051a.81.81 0 0 1 0 1.146l-6.045 6.051a.81.81 0 0 1-1.383-.574v-2.732c-5.096 0-8.829 1.455-11.604 4.611-.246.279-.702.042-.602-.316 1.43-5.173 4.925-10.004 12.206-11.045V4.813z"></path></svg></span></button></div></span></div></div></div></div></div>
+
+
+
+<script src="./sevensegdis_files/progress.5363a6cd3ab30ce786644f04e468f605.js.download"></script>
+
+<div id="hard_expire_time" data-time="1570320801.241"></div>
+
+
+
+</body></html>
